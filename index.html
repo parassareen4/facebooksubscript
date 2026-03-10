@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscribe to Ben Palmer on Facebook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #060606;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ── Noise overlay for texture ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── Landing section ── */
+    .landing {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ambient glow blobs */
+    .landing::before,
+    .landing::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      z-index: 0;
+    }
+
+    .landing::before {
+      width: 600px;
+      height: 600px;
+      top: -200px;
+      left: -100px;
+      background: rgba(24, 119, 242, 0.08);
+      animation: drift1 12s ease-in-out infinite alternate;
+    }
+
+    .landing::after {
+      width: 500px;
+      height: 500px;
+      bottom: -150px;
+      right: -100px;
+      background: rgba(66, 133, 244, 0.06);
+      animation: drift2 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift1 {
+      0%   { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(60px, 40px) scale(1.15); }
+    }
+
+    @keyframes drift2 {
+      0%   { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(-40px, -30px) scale(1.1); }
+    }
+
+    /* Subtle grid lines */
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 0;
+    }
+
+    .landing-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    /* ── Vertical divider ── */
+    .divider {
+      flex: 0 0 1px;
+      align-self: stretch;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(24, 119, 242, 0.2) 20%,
+        rgba(24, 119, 242, 0.3) 50%,
+        rgba(24, 119, 242, 0.2) 80%,
+        transparent
+      );
+      min-height: 300px;
+    }
+
+    /* ── Left: Hero info ── */
+    .hero-side {
+      flex: 0 0 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .logo-wrap {
+      position: relative;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.7s ease-out both;
+    }
+
+    /* Spinning ring around avatar */
+    .logo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-top-color: #1877f2;
+      border-right-color: rgba(24, 119, 242, 0.3);
+      animation: spin 4s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .logo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(24, 119, 242, 0.15) 0%, transparent 70%);
+      z-index: -1;
+    }
+
+    .logo {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(24, 119, 242, 0.5);
+      display: block;
+    }
+
+    .hero-name {
+      font-size: 2.6rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+      animation: fadeUp 0.7s 0.1s ease-out both;
+    }
+
+    .hero-name span {
+      background: linear-gradient(135deg, #1877f2, #4da0ff, #1877f2);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50%      { background-position: 100% 50%; }
+    }
+
+    .hero-tag {
+      font-size: 0.85rem;
+      color: #666;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.7s 0.2s ease-out both;
+    }
+
+    .join-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, #1565d8, #1877f2);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.95rem 2.2rem;
+      border-radius: 60px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      box-shadow:
+        0 0 30px rgba(24, 119, 242, 0.3),
+        0 4px 20px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      transition: transform 0.25s cubic-bezier(.4,0,.2,1), box-shadow 0.25s;
+      animation: fadeUp 0.7s 0.35s ease-out both, btnGlow 3s 2s ease-in-out infinite;
+    }
+
+    .join-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: #fff;
+    }
+
+    .join-btn:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow:
+        0 0 50px rgba(24, 119, 242, 0.5),
+        0 8px 30px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .join-btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    @keyframes btnGlow {
+      0%, 100% { box-shadow: 0 0 30px rgba(24, 119, 242, 0.3), 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15); }
+      50%      { box-shadow: 0 0 45px rgba(24, 119, 242, 0.5), 0 4px 25px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Right: Letter ── */
+    .letter-side {
+      flex: 1 1 0;
+      min-width: 0;
+      animation: fadeIn 1s 0.4s ease-out both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .letter-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #4da0ff;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .letter {
+      background: linear-gradient(165deg, #111111, #0c0c0c);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 2.5rem 2.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Blue accent corner */
+    .letter::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle at 0% 0%, rgba(24, 119, 242, 0.1) 0%, transparent 70%);
+    }
+
+    /* Subtle bottom-right glow */
+    .letter::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle at 100% 100%, rgba(24, 119, 242, 0.04) 0%, transparent 70%);
+    }
+
+    .letter > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .letter p {
+      font-size: 1.05rem;
+      color: #b0b0b0;
+      line-height: 1.8;
+      margin-bottom: 1.3rem;
+    }
+
+    .letter p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .letter .aside {
+      color: #777;
+      font-style: italic;
+      font-size: 1rem;
+    }
+
+    .letter-sign {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #4da0ff;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* ── Mobile: stack vertically ── */
+    @media (max-width: 768px) {
+      .landing {
+        padding: 3rem 1.25rem;
+        align-items: center;
+      }
+
+      .landing-inner {
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+
+      .hero-side {
+        flex: 0 0 auto;
+      }
+
+      .divider {
+        display: none;
+      }
+
+      .logo { width: 110px; height: 110px; }
+      .hero-name { font-size: 2.2rem; }
+      .hero-tag { font-size: 0.8rem; margin-bottom: 1.5rem; }
+
+      .join-btn {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 260px;
+        justify-content: center;
+      }
+
+      .letter {
+        padding: 1.8rem 1.5rem;
+      }
+
+      .letter p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      .letter .aside {
+        font-size: 0.9rem;
+      }
+
+      .letter-sign {
+        font-size: 1rem;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1023px) {
+      .hero-side { flex: 0 0 240px; }
+      .hero-name { font-size: 2.4rem; }
+      .logo { width: 120px; height: 120px; }
+      .landing-inner { gap: 2.5rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .landing-inner { gap: 3.5rem; }
+      .hero-name { font-size: 2.8rem; }
+      .logo { width: 140px; height: 140px; }
+      .letter { padding: 2.8rem 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="landing">
+    <div class="grid-bg"></div>
+
+    <div class="landing-inner">
+
+      <!-- Left: image, name, button -->
+      <div class="hero-side">
+        <div class="logo-wrap">
+          <img src="image.png" alt="Ben Palmer" class="logo">
+        </div>
+        <h1 class="hero-name"><span>Ben Palmer</span></h1>
+        <p class="hero-tag">Subscribe on Facebook</p>
+        <a href="https://www.facebook.com/PalmerTrolls/subscribe/" class="join-btn" target="_blank" rel="noopener">
+          <!-- Facebook icon -->
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Subscribe
+        </a>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider"></div>
+
+      <!-- Right: letter from Ben -->
+      <div class="letter-side">
+        <p class="letter-label">A note from Ben</p>
+        <div class="letter">
+          <p>Subscriptions help me keep my channel free of sponsored ads and brand deals, so the videos stay independent and I can keep doing what I do without anyone telling me what I can or can't say.</p>
+          <p>It also gives me a place to test material I'm developing for live shows while keeping some things private, so people who come out to shows get to see stuff that hasn't already been posted online.</p>
+          <p class="aside">(Also…it will help me pay for a lawyer).</p>
+          <div class="letter-sign">-Ben</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
